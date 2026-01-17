@@ -1,22 +1,32 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-= YOUR Template Repo Roadmap
+= proven-concat Roadmap
 
 == Current Status
 
-Initial development phase.
+Definition phase: convert template into a catalog of "concat blocks" for proven.
 
 == Milestones
 
-=== v0.1.0 - Foundation
-* [ ] Core functionality
-* [ ] Basic documentation
-* [ ] CI/CD pipeline
+=== v0.0.1 - Scaffold
+* [x] README aligned to proven-concat purpose
+* [x] Initial concat catalog document
+* [ ] Enumerate core `proven` modules by category
 
-=== v1.0.0 - Stable Release
-* [ ] Full feature set
-* [ ] Comprehensive tests
-* [ ] Production ready
+=== v0.1.0 - Recipes
+* [ ] 5-10 concrete concat recipes with minimal glue
+* [ ] Runtime attachment notes (how to plug into IO)
+* [ ] Example: config loader core and webhook core
+
+=== v1.0.0 - Stable Catalog
+* [ ] Full coverage of `proven` modules with intent tags
+* [ ] 3-5 mini-program cores with usage notes
+* [ ] Compatibility and versioning policy
+
+=== v10.0 - Ecosystem Standard
+* [ ] Auto-generated catalog from `proven` metadata
+* [ ] Community contribution process and validation checks
+* [ ] Long-term stability guarantees for core recipes
 
 == Future Directions
 
-_To be determined based on community feedback._
+* Auto-generate catalog entries from `proven` module metadata.

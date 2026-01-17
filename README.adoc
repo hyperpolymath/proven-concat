@@ -5,78 +5,60 @@
 :toc-title: Contents
 :toclevels: 3
 
-Type-safe string and collection concatenation with proven bounds — built on the https://github.com/hyperpolymath/proven[proven] library.
+Composable "concat blocks" built from the https://github.com/hyperpolymath/proven[proven] library.
 
 == Overview
 
-`proven-concat` provides verified concatenation operations that:
+`proven-concat` is a catalog of safe, reusable compositions of `proven` modules. The goal is to make it trivial to assemble a project "base" (CLI tools, API cores, router logic, config loaders, etc.) by concatenating verified components with minimal glue.
 
-* Cannot overflow buffer bounds
-* Track length at the type level
-* Prevent memory allocation failures
-* Support heterogeneous collection joining
-* Guarantee termination
+Think of it as "unbreakable gist parts" you can combine to get a working, safe core fast.
 
-== Features
+== What it is (and is not)
 
-=== Bounded String Concatenation
+* It is a curated set of compositions ("concat blocks") built from `proven` modules.
+* It is not a server framework or runtime. You plug these cores into your preferred runtime (Idris net libs, FFI, or `proven-io`).
 
-[source,idris]
-----
--- Concatenate strings with maximum length enforcement
-concat : (max : Nat) -> List String -> Either ConcatError (BoundedString max)
+== Concat Blocks (by category)
 
--- Builder pattern for efficient multi-part concatenation
-build : StringBuilder max -> Either ConcatError (BoundedString max)
-----
+* Input and CLI: `SafeArgs`, `SafeEnv`, `SafePath`, `SafeFile`, `SafeCommand`
+* Data formats: `SafeJson`, `SafeYAML`, `SafeTOML`, `SafeCSV`, `SafeXML`, `SafeHtml`, `SafeMarkdown`
+* Web/API core: `SafeHTTP`, `SafeHeader`, `SafeUrl`, `SafeCookie`, `SafeContentType`, `SafeJWT`, `SafeOAuth`, `SafeRateLimiter`, `SafeWebhook`
+* Networking/security: `SafeNetwork`, `SafeDNS`, `SafeCert`, `SafeSSH`, `SafePassword`, `SafeCrypto`, `SafeChecksum`
+* State and storage: `SafeStateMachine`, `SafeTransaction`, `SafeQueue`, `SafeLRU`, `SafeBloom`
+* Scheduling/resilience: `SafeCron`, `SafeRetry`, `SafeCircuitBreaker`
+* Misc utilities: `SafeSchema`, `SafeTemplate`, `SafeLog`, `SafeUUID`, `SafeDateTime`
 
-=== Collection Joining
+== Ready-made Compositions (examples)
 
-[source,idris]
-----
--- Join with separator, tracking total length
-joinWith : (sep : String) -> (xs : List String) ->
-           {auto prf : TotalLength xs sep <= max} -> BoundedString max
+* `safe-config-loader`: `SafeArgs` + `SafeEnv` + `SafePath` + `SafeFile` + (JSON/TOML/YAML) + `SafeSchema`
+* `safe-webhook-core`: `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType` + `SafeJson` + `SafeJWT` + `SafeRateLimiter` + `SafeLog`
+* `safe-router-table`: `SafeUrl` + `SafeRegex` + `SafeHeader` + `SafeContentType`
+* `safe-cli-pipeline`: `SafeArgs` + `SafeCSV`/`SafeJson` + `SafeFile` + `SafeChecksum` + `SafeLog`
+* `safe-scheduler-core`: `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter`
 
--- Intersperse and concat in one operation
-intercalate : String -> List (List a) -> List a
-----
+See link:docs/concat-catalog.adoc[docs/concat-catalog.adoc] for the full catalog and notes.
 
-=== Memory-Safe Operations
+== Release Milestones (Initial)
 
-[source,idris]
-----
--- Pre-allocate exact buffer size
-preallocConcat : (xs : List String) -> IO (ExactBuffer (sumLengths xs))
+=== v0.0.1 - Scaffold
+* Repository identity set (name, README, STATE, roadmap)
+* Initial concat catalog document
+* Enumerate core `proven` modules by category
 
--- Streaming concatenation for large inputs
-streamConcat : Stream String -> Nat -> IO (Either ConcatError String)
-----
+=== v0.1.0 - Recipes
+* 5-10 concrete concat recipes with minimal glue
+* Runtime attachment notes (how to plug into IO)
+* Example: config loader core and webhook core
 
-== Installation
+=== v1.0.0 - Stable Catalog
+* Full coverage of `proven` modules with intent tags
+* 3-5 mini-program cores with usage notes
+* Clear compatibility/versioning policy
 
-Add to your `ipkg` file:
-
-[source,idris]
-----
-depends = proven
-        , proven-concat
-----
-
-== Usage
-
-[source,idris]
-----
-import Proven.Concat
-
--- Safe bounded concatenation
-example : Either ConcatError (BoundedString 100)
-example = concat 100 ["Hello, ", "World", "!"]
-
--- With proof that it fits
-example2 : BoundedString 50
-example2 = joinWith ", " ["a", "b", "c"]  -- Total: 7 chars, fits in 50
-----
+=== v10.0 - Ecosystem Standard
+* Auto-generated catalog from `proven` metadata
+* Community contribution process and validation checks
+* Long-term stability guarantees for core recipes
 
 == License
 

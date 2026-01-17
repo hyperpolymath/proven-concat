@@ -1,23 +1,24 @@
 ;; SPDX-License-Identifier: PMPL-1.0
-;; STATE.scm - Project state for rsr-template-repo
+;; STATE.scm - Project state for proven-concat
 
 (state
   (metadata
     (version "0.1.0")
     (schema-version "1.0")
     (created "2024-06-01")
-    (updated "2025-01-17")
-    (project "rsr-template-repo")
-    (repo "hyperpolymath/rsr-template-repo"))
+    (updated "2026-01-17")
+    (project "proven-concat")
+    (repo "hyperpolymath/proven-concat"))
 
   (project-context
-    (name "RSR Template Repo")
-    (tagline "Template repository following Rhodium Standard Repository specification")
-    (tech-stack ("template")))
+    (name "proven-concat")
+    (tagline "Composable concat blocks built from proven modules")
+    (tech-stack ("idris2" "proven")))
 
   (current-position
-    (phase "stable")
-    (overall-completion 90)
+    (phase "definition")
+    (overall-completion 15)
     (working-features
-      ("RSR compliance structure"
-       "Template files"))))
+      ("Concat catalog scaffolding"
+       "Roadmap draft"
+       "Release milestones draft"))))

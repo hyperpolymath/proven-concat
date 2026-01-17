@@ -1,5 +1,5 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; NEUROSYM.scm - Neurosymbolic integration config for rsr-template-repo
+;; NEUROSYM.scm - Neurosymbolic integration config for proven-concat
 
 (define neurosym-config
   `((version . "1.0.0")
@@ -10,4 +10,5 @@
     (neural-layer
       ((embeddings . false)
        (fine-tuning . false)))
-    (integration . ())))
+    (integration
+      ((goal . "safe component composition and validation")))))

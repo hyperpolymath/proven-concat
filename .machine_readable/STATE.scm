@@ -1,5 +1,5 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; STATE.scm - Project state for rsr-template-repo
+;; STATE.scm - Project state for proven-concat
 ;; Media-Type: application/vnd.state+scm
 
 (state
@@ -7,18 +7,18 @@
     (version "0.0.1")
     (schema-version "1.0")
     (created "2026-01-03")
-    (updated "2026-01-03")
-    (project "rsr-template-repo")
-    (repo "github.com/hyperpolymath/rsr-template-repo"))
+    (updated "2026-01-17")
+    (project "proven-concat")
+    (repo "github.com/hyperpolymath/proven-concat"))
 
   (project-context
-    (name "rsr-template-repo")
-    (tagline "")
-    (tech-stack ()))
+    (name "proven-concat")
+    (tagline "Composable concat blocks built from proven modules")
+    (tech-stack ("idris2" "proven")))
 
   (current-position
-    (phase "initial")
-    (overall-completion 0)
+    (phase "definition")
+    (overall-completion 15)
     (components ())
     (working-features ()))
 
@@ -32,8 +32,11 @@
     (low))
 
   (critical-next-actions
-    (immediate)
-    (this-week)
-    (this-month))
+    (immediate
+      ("Enumerate proven modules into catalog"))
+    (this-week
+      ("Draft 3-5 concat compositions"))
+    (this-month
+      ("Prototype one mini-program core"))))
 
   (session-history ()))

@@ -1,0 +1,60 @@
+// SPDX-License-Identifier: PMPL-1.0
+= proven-concat Catalog
+:toc: macro
+:toclevels: 2
+
+This catalog lists "concat blocks" (compositions of `proven` modules) and example mini-program cores. The intent is to assemble verified cores that you can drop into your runtime of choice with minimal glue.
+
+== Concat Blocks
+
+=== Input and configuration
+
+* `SafeArgs` + `SafeEnv` + `SafePath` + `SafeFile` + `SafeSchema`
+* Purpose: safe CLI + env + config file pipeline, with schema-checked config objects.
+
+=== Web/API core
+
+* `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType`
+* Add-ons: `SafeCookie`, `SafeJWT`, `SafeOAuth`, `SafeRateLimiter`, `SafeWebhook`
+* Purpose: validated request/response core you can plug into a server runtime.
+
+=== Data ingestion
+
+* `SafeCSV` + `SafeJson` + `SafeXML` + `SafeYAML` + `SafeTOML`
+* Add-ons: `SafeDateTime`, `SafeDecimal`
+* Purpose: safe parsers and validators for incoming datasets.
+
+=== Network guard
+
+* `SafeNetwork` + `SafeDNS` + `SafeCert` + `SafeSSH` + `SafePolicy`
+* Purpose: validated network identifiers, certificates, and access policy components.
+
+=== Storage and state
+
+* `SafeStateMachine` + `SafeTransaction` + `SafeQueue` + `SafeLRU` + `SafeBloom`
+* Purpose: safe state transition cores with bounded resource behavior.
+
+=== Resilience
+
+* `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter` + `SafeLog`
+* Purpose: safe, bounded retry and protection patterns.
+
+== Example Mini-Program Cores
+
+Each "core" is the verified logic. You attach IO/runtime with `proven-io` or your preferred backend.
+
+* Config validator CLI core
+  * `SafeArgs` + `SafeEnv` + `SafeFile` + `SafeSchema` + (JSON/TOML/YAML)
+* Webhook receiver core
+  * `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType` + `SafeJson` + `SafeJWT`
+* Router table core
+  * `SafeUrl` + `SafeRegex` + `SafeHeader` + `SafeContentType`
+* CSV to JSON transformer core
+  * `SafeCSV` + `SafeJson` + `SafeDateTime` + `SafeDecimal`
+* Safe scheduler core
+  * `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter`
+
+== Notes
+
+* This repo focuses on composition and documentation of safe cores.
+* Runtime implementations are intentionally minimal and can be hosted elsewhere if needed.

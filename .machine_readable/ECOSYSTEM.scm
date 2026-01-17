@@ -1,20 +1,24 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; ECOSYSTEM.scm - Ecosystem position for rsr-template-repo
+;; ECOSYSTEM.scm - Ecosystem position for proven-concat
 ;; Media-Type: application/vnd.ecosystem+scm
 
 (ecosystem
   (version "1.0")
-  (name "rsr-template-repo")
-  (type "")
-  (purpose "")
+  (name "proven-concat")
+  (type "library-catalog")
+  (purpose "Composable concat blocks built from proven modules")
 
   (position-in-ecosystem
-    (category "")
-    (subcategory "")
-    (unique-value ()))
+    (category "proven-family")
+    (subcategory "composition-catalog")
+    (unique-value ("verified-component compositions")))
 
-  (related-projects ())
+  (related-projects ("proven" "proven-io"))
 
-  (what-this-is ())
+  (what-this-is
+    ("catalog of safe component compositions"
+     "starter cores for verified projects"))
 
-  (what-this-is-not ()))
+  (what-this-is-not
+    ("runtime or framework"
+     "network server implementation"))))

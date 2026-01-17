@@ -1,5 +1,5 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; AGENTIC.scm - AI agent interaction patterns for rsr-template-repo
+;; AGENTIC.scm - AI agent interaction patterns for proven-concat
 
 (define agentic-config
   `((version . "1.0.0")
@@ -12,5 +12,5 @@
        (refactoring . "conservative")
        (testing . "comprehensive")))
     (constraints
-      ((languages . ())
+      ((languages . ("idris2"))
        (banned . ("typescript" "go" "python" "makefile"))))))
