@@ -54,6 +54,134 @@ Each "core" is the verified logic. You attach IO/runtime with `proven-io` or you
 * Safe scheduler core
   * `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter`
 
+== Module Inventory (from `proven/src`)
+
+Short intent tags for each top-level module. Submodules (`/Parser`, `/Proofs`, `/Types`, etc.) are omitted here but are part of the module families.
+
+=== Core and foundations
+
+* `Proven` - umbrella exports
+* `Proven.Core` - core proofs and primitives
+* `SafeInput` - validated input primitives
+* `SafeHistory` - safe audit trails and histories
+* `SafeState` - safe state container patterns
+* `SafeUnit` - unit-safe values
+* `SafeOrdering` - safe comparisons and ordering proofs
+* `SafeInterval` - bounded interval handling
+* `SafeMonotonic` - monotonicity guarantees
+* `SafeVersion` - version parsing/constraints
+* `SafeProvenance` - provenance metadata
+
+=== Text, encoding, markup
+
+* `SafeString` - validated/escaped strings
+* `SafeRegex` - safe regex parsing/matching
+* `SafeMarkdown` - safe markdown structures
+* `SafeHtml` - safe HTML building/sanitizing
+* `SafeXML` - safe XML building/parsing
+* `SafeTemplate` - safe templating primitives
+* `SafeI18n` - safe locale/i18n handling
+* `SafeHex` - hex encoding/decoding
+* `SafeBase64` - base64 encoding/decoding
+* `SafeBibTeX` - safe BibTeX parsing
+
+=== Data formats
+
+* `SafeJson` - safe JSON parsing/access
+* `SafeYAML` - safe YAML parsing
+* `SafeTOML` - safe TOML parsing
+* `SafeCSV` - safe CSV parsing
+
+=== Web and API core
+
+* `SafeHTTP` - HTTP method/status/message handling
+* `SafeHeader` - validated headers
+* `SafeContentType` - content-type parsing/validation
+* `SafeCookie` - cookie parsing/validation
+* `SafeUrl` - URL parsing/validation
+* `SafeWebhook` - webhook validation primitives
+* `SafeOAuth` - OAuth-safe structures
+* `SafeJWT` - JWT decode/validate structures
+
+=== CLI, env, files, commands
+
+* `SafeArgs` - CLI argument parsing
+* `SafeEnv` - environment variable access
+* `SafePath` - safe path parsing/operations
+* `SafeFile` - safe file operations
+* `SafeCommand` - safe command building/escaping
+
+=== Security and identity
+
+* `SafeCrypto` - cryptographic primitives
+* `SafeChecksum` - checksum validation
+* `SafePassword` - password policies and hashing
+* `SafeCert` - certificate structures/validation
+* `SafeSSH` - SSH key/connection safety
+* `SafeUUID` - UUID parsing/validation
+
+=== Network
+
+* `SafeNetwork` - IP/CIDR/port validation
+* `SafeDNS` - DNS-safe structures
+
+=== State and data structures
+
+* `SafeStateMachine` - safe state transitions
+* `SafeTransaction` - transaction modeling
+* `SafeQueue` - bounded queue
+* `SafeLRU` - safe LRU cache
+* `SafeBloom` - safe bloom filter
+* `SafeSet` - safe sets
+* `SafeUnionFind` - union-find with proofs
+* `SafeTree` - safe tree structures
+* `SafeGraph` - safe graphs
+* `SafeHeap` - safe heap structures
+* `SafeBuffer` - safe buffer handling
+* `SafeResource` - resource constraints
+
+=== Math and scientific
+
+* `SafeMath` - numeric proof utilities
+* `SafeDecimal` - decimal-safe arithmetic
+* `SafeRational` - rationals
+* `SafeFloat` - safe floating points
+* `SafeComplex` - complex numbers
+* `SafeMatrix` - matrix structures
+* `SafeTensor` - tensor structures
+* `SafeProbability` - probability-safe ops
+* `SafeFiniteField` - finite field arithmetic
+* `SafeCalculator` - safe calculator primitives
+* `SafeAngle` - angle-safe values
+* `SafeGeo` - geospatial-safe values
+* `SafeColor` - color-safe values
+* `SafeCurrency` - currency-safe values
+* `SafeBitset` - bitset-safe operations
+
+=== Time, scheduling, resilience
+
+* `SafeDateTime` - date/time parsing and zones
+* `SafeCron` - cron schedule validation
+* `SafeRetry` - bounded retry logic
+* `SafeCircuitBreaker` - safe circuit breaker
+* `SafeRateLimiter` - safe rate limiting
+* `SafeSemaphore` - safe semaphore logic
+
+=== Platform and tooling
+
+* `SafeArchive` - archive handling
+* `SafeSQL` - SQL parameterization/building
+* `SafeLog` - safe logging primitives
+* `SafePolicy` - policy definitions
+* `SafeCapability` - capability-based security
+* `SafeDocker` - Docker-safe structures
+* `SafeGit` - Git-safe structures
+* `SafeMCP` - MCP-safe structures
+* `SafeML` - ML-safe structures
+* `SafeSchema` - schema definitions/validation
+* `SafeEmail` - email parsing/validation
+* `SafePhone` - phone number parsing/validation
+
 == Notes
 
 * This repo focuses on composition and documentation of safe cores.

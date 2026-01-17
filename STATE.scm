@@ -17,8 +17,9 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 15)
+    (overall-completion 25)
     (working-features
       ("Concat catalog scaffolding"
        "Roadmap draft"
-       "Release milestones draft"))))
+       "Release milestones draft"
+       "Module inventory list"))))

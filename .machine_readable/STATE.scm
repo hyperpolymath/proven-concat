@@ -18,7 +18,7 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 15)
+    (overall-completion 25)
     (components ())
     (working-features ()))
 
@@ -32,8 +32,7 @@
     (low))
 
   (critical-next-actions
-    (immediate
-      ("Enumerate proven modules into catalog"))
+    (immediate)
     (this-week
       ("Draft 3-5 concat compositions"))
     (this-month
