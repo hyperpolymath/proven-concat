@@ -1,3 +1,88 @@
-= RSR template repo - see RSR_OUTLINE.adoc in root for general background and specification
+// SPDX-License-Identifier: PMPL-1.0
+// SPDX-FileCopyrightText: 2025 Hyperpolymath
+= proven-concat
+:toc: macro
+:toc-title: Contents
+:toclevels: 3
 
-== This is your repo - don't forget to rename me!
+Type-safe string and collection concatenation with proven bounds — built on the https://github.com/hyperpolymath/proven[proven] library.
+
+== Overview
+
+`proven-concat` provides verified concatenation operations that:
+
+* Cannot overflow buffer bounds
+* Track length at the type level
+* Prevent memory allocation failures
+* Support heterogeneous collection joining
+* Guarantee termination
+
+== Features
+
+=== Bounded String Concatenation
+
+[source,idris]
+----
+-- Concatenate strings with maximum length enforcement
+concat : (max : Nat) -> List String -> Either ConcatError (BoundedString max)
+
+-- Builder pattern for efficient multi-part concatenation
+build : StringBuilder max -> Either ConcatError (BoundedString max)
+----
+
+=== Collection Joining
+
+[source,idris]
+----
+-- Join with separator, tracking total length
+joinWith : (sep : String) -> (xs : List String) ->
+           {auto prf : TotalLength xs sep <= max} -> BoundedString max
+
+-- Intersperse and concat in one operation
+intercalate : String -> List (List a) -> List a
+----
+
+=== Memory-Safe Operations
+
+[source,idris]
+----
+-- Pre-allocate exact buffer size
+preallocConcat : (xs : List String) -> IO (ExactBuffer (sumLengths xs))
+
+-- Streaming concatenation for large inputs
+streamConcat : Stream String -> Nat -> IO (Either ConcatError String)
+----
+
+== Installation
+
+Add to your `ipkg` file:
+
+[source,idris]
+----
+depends = proven
+        , proven-concat
+----
+
+== Usage
+
+[source,idris]
+----
+import Proven.Concat
+
+-- Safe bounded concatenation
+example : Either ConcatError (BoundedString 100)
+example = concat 100 ["Hello, ", "World", "!"]
+
+-- With proof that it fits
+example2 : BoundedString 50
+example2 = joinWith ", " ["a", "b", "c"]  -- Total: 7 chars, fits in 50
+----
+
+== License
+
+link:LICENSE[PMPL-1.0] (Palimpsest-MPL-1.0)
+
+== Related
+
+* https://github.com/hyperpolymath/proven[proven] - Core verified safety library
+* https://github.com/hyperpolymath/proven-io[proven-io] - Safe I/O operations
