@@ -17,7 +17,7 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 50)
+    (overall-completion 65)
     (working-features
       ("Concat catalog scaffolding"
        "Roadmap draft"
@@ -26,4 +26,5 @@
        "Composition recipes draft"
        "Mini-program core docs"
        "Runtime adapter notes"
-       "Minimal glue stubs"))))
+       "Minimal glue stubs"
+       "Core module skeletons"))))

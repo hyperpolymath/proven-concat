@@ -18,7 +18,7 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 50)
+    (overall-completion 65)
     (components ())
     (working-features ()))
 
