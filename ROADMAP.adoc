@@ -3,23 +3,23 @@
 
 == Current Status
 
-Definition phase: convert template into a catalog of "concat blocks" for proven.
+Catalog phase: cores documented and skeleton modules created; next work is implementing core logic and packaging.
 
 == Milestones
 
 === v0.0.1 - Scaffold
 * [x] README aligned to proven-concat purpose
 * [x] Initial concat catalog document
-* [ ] Enumerate core `proven` modules by category
+* [x] Enumerate core `proven` modules by category
 
 === v0.1.0 - Recipes
-* [ ] 5-10 concrete concat recipes with minimal glue
-* [ ] Runtime attachment notes (how to plug into IO)
-* [ ] Example: config loader core and webhook core
+* [x] 5-10 concrete concat recipes with minimal glue
+* [x] Runtime attachment notes (how to plug into IO)
+* [x] Example: config loader core and webhook core
 
 === v1.0.0 - Stable Catalog
-* [ ] Full coverage of `proven` modules with intent tags
-* [ ] 3-5 mini-program cores with usage notes
+* [x] Full coverage of `proven` modules with intent tags
+* [x] 3-5 mini-program cores with usage notes
 * [ ] Compatibility and versioning policy
 
 === v10.0 - Ecosystem Standard

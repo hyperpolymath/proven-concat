@@ -38,6 +38,22 @@ Think of it as "unbreakable gist parts" you can combine to get a working, safe c
 
 See link:docs/concat-catalog.adoc[docs/concat-catalog.adoc] for the full catalog and notes.
 
+== Where to Start
+
+* Catalog overview: link:docs/concat-catalog.adoc[docs/concat-catalog.adoc]
+* Core registry: link:docs/core-registry.adoc[docs/core-registry.adoc]
+* Runtime adapters: link:docs/runtime-adapters.adoc[docs/runtime-adapters.adoc]
+* Minimal glue stubs: link:docs/glue/minimal-idris-stubs.adoc[docs/glue/minimal-idris-stubs.adoc]
+* Harness patterns: link:docs/harnesses/example-harness-patterns.adoc[docs/harnesses/example-harness-patterns.adoc]
+* Core skeletons: `src/ProvenConcat/ConfigLoader.idr`, `src/ProvenConcat/WebhookCore.idr`,
+  `src/ProvenConcat/RouterTable.idr`, `src/ProvenConcat/CLIPipeline.idr`, `src/ProvenConcat/SchedulerCore.idr`
+
+== Next Steps (Suggested)
+
+* Implement real logic in the four remaining core modules (Webhook/Router/CLI/Scheduler).
+* Replace placeholder types in `ConfigLoader` with concrete schema-validated types.
+* Add `proven-concat.ipkg` exports and a minimal build/test harness.
+
 == Release Milestones (Initial)
 
 === v0.0.1 - Scaffold

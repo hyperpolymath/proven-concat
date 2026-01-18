@@ -6,7 +6,7 @@
     (version "0.1.0")
     (schema-version "1.0")
     (created "2024-06-01")
-    (updated "2026-01-17")
+    (updated "2026-01-18")
     (project "proven-concat")
     (repo "hyperpolymath/proven-concat"))
 
@@ -17,7 +17,7 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 65)
+    (overall-completion 75)
     (working-features
       ("Concat catalog scaffolding"
        "Roadmap draft"
@@ -27,4 +27,6 @@
        "Mini-program core docs"
        "Runtime adapter notes"
        "Minimal glue stubs"
-       "Core module skeletons"))))
+       "Core module skeletons"
+       "Core registry table"
+       "Example harness patterns"))))
