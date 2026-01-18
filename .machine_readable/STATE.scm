@@ -18,7 +18,7 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 25)
+    (overall-completion 35)
     (components ())
     (working-features ()))
 
@@ -33,8 +33,7 @@
 
   (critical-next-actions
     (immediate)
-    (this-week
-      ("Draft 3-5 concat compositions"))
+    (this-week)
     (this-month
       ("Prototype one mini-program core"))))
 

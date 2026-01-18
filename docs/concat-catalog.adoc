@@ -54,6 +54,57 @@ Each "core" is the verified logic. You attach IO/runtime with `proven-io` or you
 * Safe scheduler core
   * `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter`
 
+== Composition Recipes (Minimal Glue)
+
+Each recipe shows a verified core made by composing `proven` modules. The IO/runtime layer is intentionally left to the host project.
+
+=== Recipe 1: Safe Config Loader
+
+* Modules: `SafeArgs` + `SafeEnv` + `SafePath` + `SafeFile` + `SafeSchema` + (`SafeJson`|`SafeTOML`|`SafeYAML`)
+* Core flow:
+  * Parse CLI + env for config path/options
+  * Validate path and file existence
+  * Parse config format
+  * Validate config against schema
+* Output: typed config record or validated map
+
+=== Recipe 2: Safe Webhook Core
+
+* Modules: `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType` + `SafeJson` + `SafeJWT` + `SafeRateLimiter` + `SafeLog`
+* Core flow:
+  * Validate method + URL + headers
+  * Enforce content-type and decode JSON
+  * Verify signature/token
+  * Apply rate limits and log audit events
+* Output: verified webhook payload + metadata
+
+=== Recipe 3: Safe Router Table
+
+* Modules: `SafeUrl` + `SafeRegex` + `SafeHeader` + `SafeContentType`
+* Core flow:
+  * Match request path against safe regex table
+  * Validate header invariants for route
+  * Validate content-type per route
+* Output: matched route + verified route inputs
+
+=== Recipe 4: Safe CLI Pipeline
+
+* Modules: `SafeArgs` + (`SafeCSV`|`SafeJson`) + `SafeFile` + `SafeChecksum` + `SafeLog`
+* Core flow:
+  * Parse CLI flags and input/output paths
+  * Validate input file and checksum
+  * Parse data and produce verified output
+* Output: validated dataset or transformed output
+
+=== Recipe 5: Safe Scheduler Core
+
+* Modules: `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter` + `SafeLog`
+* Core flow:
+  * Validate schedule expressions
+  * Wrap task execution with retry/breaker/limits
+  * Emit structured logs for runs/failures
+* Output: guarded task runner policy
+
 == Module Inventory (from `proven/src`)
 
 Short intent tags for each top-level module. Submodules (`/Parser`, `/Proofs`, `/Types`, etc.) are omitted here but are part of the module families.
