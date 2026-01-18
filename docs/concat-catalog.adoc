@@ -49,7 +49,7 @@ Each "core" is the verified logic. You attach IO/runtime with `proven-io` or you
   * `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType` + `SafeJson` + `SafeJWT`
 * link:cores/safe-router-table.adoc[Safe router table core]
   * `SafeUrl` + `SafeRegex` + `SafeHeader` + `SafeContentType`
-* CSV to JSON transformer core
+* link:cores/safe-cli-pipeline.adoc[Safe CLI pipeline core]
   * `SafeCSV` + `SafeJson` + `SafeDateTime` + `SafeDecimal`
 * Safe scheduler core
   * `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter`

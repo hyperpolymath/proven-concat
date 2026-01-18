@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Safe CLI Pipeline Core
+
+Verified CLI data processing pipeline.
+
+== Composition
+
+* `SafeArgs` + `SafeFile` + `SafeChecksum` + `SafeLog`
+* One of: `SafeCSV` | `SafeJson`
+
+== Inputs
+
+* CLI args for input/output files and mode
+* Optional expected checksum
+
+== Outputs
+
+* Validated dataset or transformed output
+* Log record for processing steps
+
+== Invariants
+
+* Inputs are parsed and validated
+* File paths are safe and resolvable
+* Checksums match expected value (if provided)
+* Parser output is validated before use
+
+== Minimal Glue (Pseudo-Flow)
+
+1. Parse CLI args with `SafeArgs`.
+2. Validate input/output paths with `SafeFile`.
+3. If provided, validate checksum with `SafeChecksum`.
+4. Parse dataset with `SafeCSV` or `SafeJson`.
+5. Emit `SafeLog` entries for each stage.
+
+== Notes
+
+* Add `SafeSchema` when strict schema validation is required.
