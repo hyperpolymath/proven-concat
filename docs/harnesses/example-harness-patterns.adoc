@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Example Harness Patterns
+:toc: macro
+:toclevels: 2
+
+Small testing and demo harness patterns for `proven-concat` cores. These are runtime-agnostic and focus on validating core inputs and outputs.
+
+== Pattern: Pure Input Table
+
+* Build a table of validated inputs and expected outputs.
+* Use `Either` or `Maybe` to capture failure modes.
+
+== Pattern: Error Snapshot
+
+* Feed known-bad inputs and assert error tags.
+* Store error snapshots as golden records for regression checks.
+
+== Pattern: Parser Roundtrip
+
+* Parse input into validated types.
+* Serialize back to a canonical form.
+* Compare to expected canonical output.
+
+== Pattern: Constraint Fuzz (Bounded)
+
+* Generate bounded inputs within known constraints.
+* Ensure all generated inputs pass validation.
+* Check boundary conditions explicitly.
+
+== Pattern: Cross-Format Parity
+
+* Convert the same dataset through JSON/TOML/YAML paths.
+* Compare resulting validated structures for equivalence.

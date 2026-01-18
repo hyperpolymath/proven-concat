@@ -239,3 +239,4 @@ Short intent tags for each top-level module. Submodules (`/Parser`, `/Proofs`, `
 * Runtime implementations are intentionally minimal and can be hosted elsewhere if needed.
 * See link:runtime-adapters.adoc[docs/runtime-adapters.adoc] for adapter guidance.
 * See link:glue/minimal-idris-stubs.adoc[docs/glue/minimal-idris-stubs.adoc] for minimal glue sketches.
+* See link:harnesses/example-harness-patterns.adoc[docs/harnesses/example-harness-patterns.adoc] for harness patterns.
