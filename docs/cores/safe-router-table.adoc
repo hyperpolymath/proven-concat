@@ -1,0 +1,36 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Safe Router Table Core
+
+Verified route matching and request classification.
+
+== Composition
+
+* `SafeUrl` + `SafeRegex` + `SafeHeader` + `SafeContentType`
+
+== Inputs
+
+* Request URL + headers + optional content-type
+* Route table with regex patterns and constraints
+
+== Outputs
+
+* Matched route id + validated parameters
+* Reject reason on mismatch
+
+== Invariants
+
+* URL is validated before matching
+* Route regexes are safe/validated
+* Header constraints are enforced per route
+* Content-type requirements enforced
+
+== Minimal Glue (Pseudo-Flow)
+
+1. Parse and validate URL via `SafeUrl`.
+2. Match route patterns with `SafeRegex`.
+3. Validate headers with `SafeHeader`.
+4. Enforce content-type with `SafeContentType`.
+
+== Notes
+
+* This core does not perform routing side effects; it only classifies.
