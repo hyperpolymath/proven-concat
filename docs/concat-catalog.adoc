@@ -43,7 +43,7 @@ This catalog lists "concat blocks" (compositions of `proven` modules) and exampl
 
 Each "core" is the verified logic. You attach IO/runtime with `proven-io` or your preferred backend.
 
-* Config validator CLI core
+* link:cores/safe-config-loader.adoc[Safe config loader core]
   * `SafeArgs` + `SafeEnv` + `SafeFile` + `SafeSchema` + (JSON/TOML/YAML)
 * Webhook receiver core
   * `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType` + `SafeJson` + `SafeJWT`

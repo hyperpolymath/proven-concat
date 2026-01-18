@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Safe Config Loader Core
+
+Verified configuration loading pipeline with minimal glue.
+
+== Composition
+
+* `SafeArgs` + `SafeEnv` + `SafePath` + `SafeFile` + `SafeSchema`
+* One of: `SafeJson` | `SafeTOML` | `SafeYAML`
+
+== Inputs
+
+* CLI args: `--config` path, optional format override
+* Environment fallback: `CONFIG_PATH`, `CONFIG_FORMAT`
+
+== Outputs
+
+* Validated config value (typed record or validated map)
+* Structured error with failing stage
+
+== Invariants
+
+* Paths are normalized and safe
+* Config file exists and is readable
+* Format parser matches declared format
+* Schema validation passes before use
+
+== Minimal Glue (Pseudo-Flow)
+
+1. Parse CLI args with `SafeArgs`.
+2. Resolve config path from args or `SafeEnv`.
+3. Validate path with `SafePath`.
+4. Read file with `SafeFile`.
+5. Parse data with `SafeJson`/`SafeTOML`/`SafeYAML`.
+6. Validate with `SafeSchema`.
+
+== Notes
+
+* The runtime is responsible for IO and file reading.
+* Use `SafeChecksum` if tamper detection is required.
