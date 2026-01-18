@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Minimal Idris Glue Stubs
+
+Small sketches showing how a runtime would call a core. These are placeholders; wire them to your runtime of choice.
+
+== Config Loader Stub
+
+[source,idris]
+----
+module ProvenConcat.Stub.ConfigLoader
+
+import Proven.SafeArgs
+import Proven.SafeEnv
+import Proven.SafePath
+import Proven.SafeFile
+import Proven.SafeSchema
+import Proven.SafeJson
+
+-- parseArgs : List ArgSpec -> List String -> ArgResult ParsedArgs
+-- loadConfig : RawInput -> Either CoreError Config
+loadConfig : List String -> Either String Config
+loadConfig argv =
+  case parse argvSpecs argv of
+    Ok parsed =>
+      let path = resolveConfigPath parsed in
+      -- pseudo: read file, parse, validate schema
+      Right defaultConfig
+    Err e => Left (friendlyError e)
+----
+
+== Webhook Core Stub
+
+[source,idris]
+----
+module ProvenConcat.Stub.Webhook
+
+import Proven.SafeHTTP
+import Proven.SafeHeader
+import Proven.SafeUrl
+import Proven.SafeContentType
+import Proven.SafeJson
+import Proven.SafeJWT
+
+handleWebhook : RawRequest -> Either String ValidPayload
+handleWebhook req =
+  -- pseudo: validate method/url/headers, parse JSON, verify token
+  Right payload
+----
+
+== Router Table Stub
+
+[source,idris]
+----
+module ProvenConcat.Stub.Router
+
+import Proven.SafeUrl
+import Proven.SafeRegex
+import Proven.SafeHeader
+import Proven.SafeContentType
+
+routeRequest : RawRequest -> Either String RouteMatch
+routeRequest req =
+  -- pseudo: validate URL, match regex table, validate headers
+  Right match
+----
