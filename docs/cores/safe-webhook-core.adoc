@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Safe Webhook Core
+
+Verified webhook validation pipeline with minimal glue.
+
+== Composition
+
+* `SafeHTTP` + `SafeHeader` + `SafeUrl` + `SafeContentType`
+* `SafeJson` + `SafeJWT` + `SafeRateLimiter` + `SafeLog`
+
+== Inputs
+
+* HTTP method, URL, headers, body
+* Optional shared secret or JWT public key
+
+== Outputs
+
+* Verified payload + metadata
+* Audit log events for accept/reject
+
+== Invariants
+
+* Method is valid and expected
+* URL and headers are validated
+* Content-Type matches parser
+* JWT or signature checks pass
+* Rate limits enforced before processing
+
+== Minimal Glue (Pseudo-Flow)
+
+1. Parse and validate method, URL, headers with `SafeHTTP`/`SafeUrl`/`SafeHeader`.
+2. Enforce content-type with `SafeContentType`.
+3. Decode JSON payload with `SafeJson`.
+4. Verify auth token with `SafeJWT`.
+5. Apply `SafeRateLimiter`.
+6. Emit `SafeLog` events for accept/reject.
+
+== Notes
+
+* This core does not open sockets; attach a runtime handler.
