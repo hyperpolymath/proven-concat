@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Core Registry
+:toc: macro
+:toclevels: 2
+
+Registry of core compositions and their expected inputs/outputs.
+
+== Registry
+
+[cols="1,2,2,2",options="header"]
+|===
+| Core | Modules | Inputs | Outputs
+
+| Safe Config Loader
+| SafeArgs, SafeEnv, SafePath, SafeFile, SafeSchema, SafeJson/TOML/YAML
+| argv + env + config bytes
+| validated config
+
+| Safe Webhook Core
+| SafeHTTP, SafeHeader, SafeUrl, SafeContentType, SafeJson, SafeJWT, SafeRateLimiter, SafeLog
+| method + url + headers + body
+| verified payload + metadata
+
+| Safe Router Table
+| SafeUrl, SafeRegex, SafeHeader, SafeContentType
+| url + headers + content-type
+| matched route + params
+
+| Safe CLI Pipeline
+| SafeArgs, SafeFile, SafeChecksum, SafeCSV/Json, SafeLog
+| argv + file bytes
+| validated dataset
+
+| Safe Scheduler Core
+| SafeCron, SafeRetry, SafeCircuitBreaker, SafeRateLimiter, SafeLog
+| schedule + task policy
+| validated execution policy
+|===
