@@ -17,10 +17,13 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 35)
+    (overall-completion 50)
     (working-features
       ("Concat catalog scaffolding"
        "Roadmap draft"
        "Release milestones draft"
        "Module inventory list"
-       "Composition recipes draft"))))
+       "Composition recipes draft"
+       "Mini-program core docs"
+       "Runtime adapter notes"
+       "Minimal glue stubs"))))

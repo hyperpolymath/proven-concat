@@ -18,7 +18,7 @@
 
   (current-position
     (phase "definition")
-    (overall-completion 35)
+    (overall-completion 50)
     (components ())
     (working-features ()))
 
@@ -35,6 +35,6 @@
     (immediate)
     (this-week)
     (this-month
-      ("Prototype one mini-program core"))))
+      ("Add example harness patterns"))))
 
   (session-history ()))
