@@ -1,0 +1,54 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Runtime Adapters
+:toc: macro
+:toclevels: 2
+
+This document explains how to attach `proven-concat` cores to an IO/runtime layer. The cores are pure, verified logic; the runtime provides parsing of raw bytes, sockets, file IO, scheduling, and system integration.
+
+== Adapter Pattern
+
+Each core is exposed as:
+
+* A validated input type (request, config, dataset, schedule)
+* A pure transformation or decision function
+* A structured error type for rejection
+
+The runtime adapter is responsible for:
+
+* Converting raw inputs into core input types
+* Calling the core and handling errors
+* Emitting logs and side effects
+
+== Suggested Adapter Targets
+
+=== proven-io
+
+If you use `proven-io`, the adapter typically:
+
+* Reads files and env vars via safe wrappers
+* Normalizes input before passing to core
+* Converts core output into runtime actions
+
+=== Idris net libraries
+
+When attaching to HTTP or TCP runtimes:
+
+* Parse raw request into `SafeHTTP`/`SafeHeader`/`SafeUrl`
+* Map runtime error responses to core error types
+* Keep core logic pure; avoid embedding network effects
+
+=== FFI runtimes (Rust, etc.)
+
+For FFI:
+
+* Validate inbound data before crossing into Idris core
+* Keep all untrusted bytes outside the core
+* Pass only validated types to the core
+
+== Adapter Checklist
+
+* Inputs are validated before use
+* Outputs are explicitly typed and checked
+* Errors are mapped without losing detail
+* Logging does not expose secrets
+* Rate limits and retries are enforced outside the core

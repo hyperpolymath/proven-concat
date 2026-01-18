@@ -237,3 +237,4 @@ Short intent tags for each top-level module. Submodules (`/Parser`, `/Proofs`, `
 
 * This repo focuses on composition and documentation of safe cores.
 * Runtime implementations are intentionally minimal and can be hosted elsewhere if needed.
+* See link:runtime-adapters.adoc[docs/runtime-adapters.adoc] for adapter guidance.
