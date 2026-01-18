@@ -1,0 +1,37 @@
+// SPDX-License-Identifier: PMPL-1.0
+= Safe Scheduler Core
+
+Verified scheduling and execution guardrails.
+
+== Composition
+
+* `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter` + `SafeLog`
+
+== Inputs
+
+* Cron schedule expressions
+* Task descriptor and retry policy parameters
+
+== Outputs
+
+* Validated schedule and execution policy
+* Logs of scheduled runs and failures
+
+== Invariants
+
+* Schedule expressions are validated before use
+* Retry policies are bounded
+* Circuit breaker state is enforced
+* Rate limits applied per task
+
+== Minimal Glue (Pseudo-Flow)
+
+1. Validate cron expression with `SafeCron`.
+2. Wrap execution with `SafeRetry`.
+3. Protect with `SafeCircuitBreaker`.
+4. Apply `SafeRateLimiter` per task.
+5. Emit `SafeLog` for each run/failure.
+
+== Notes
+
+* The runtime supplies the actual task runner and clock.

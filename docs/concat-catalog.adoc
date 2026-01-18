@@ -51,7 +51,7 @@ Each "core" is the verified logic. You attach IO/runtime with `proven-io` or you
   * `SafeUrl` + `SafeRegex` + `SafeHeader` + `SafeContentType`
 * link:cores/safe-cli-pipeline.adoc[Safe CLI pipeline core]
   * `SafeCSV` + `SafeJson` + `SafeDateTime` + `SafeDecimal`
-* Safe scheduler core
+* link:cores/safe-scheduler-core.adoc[Safe scheduler core]
   * `SafeCron` + `SafeRetry` + `SafeCircuitBreaker` + `SafeRateLimiter`
 
 == Composition Recipes (Minimal Glue)
