@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0
+// SPDX-License-Identifier: PMPL-1.0-or-later
 = Safe Config Loader Core
 
 Verified configuration loading pipeline with minimal glue.

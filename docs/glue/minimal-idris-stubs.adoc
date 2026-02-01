@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0
+// SPDX-License-Identifier: PMPL-1.0-or-later
 = Minimal Idris Glue Stubs
 
 Small sketches showing how a runtime would call a core. These are placeholders; wire them to your runtime of choice.
